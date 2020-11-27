@@ -66,15 +66,11 @@ function validate_field_coordinates(array $form_values, array &$form, array $par
     $fileDB = new FileDB(DB_FILE);
 
     $fileDB->load();
-    $data = [];
 
-    foreach ($params as $field_index) {
-        $data = $fileDB->getRowWhere('pixels', [
-            $field_index => $form_values[$field_index]
-        ]);
-    }
-
-    if ($data) {
+    if ($fileDB->getRowWhere('pixels', [
+        $params[0] => $form_values[$params[0]],
+        $params[1] => $form_values[$params[1]],
+    ])) {
         $form['error'] = 'These coordinates are already taken, choose new ones';
 
         return false;
