@@ -5,7 +5,7 @@ $nav = nav();
 
 $fileDB = new FileDB(DB_FILE);
 $fileDB->load();
-$pixels = $fileDB->getRowsWhere('items');
+$pixels = $fileDB->getRowsWhere('pixels');
 
 if (is_logged_in()) {
     $h3 = "Sveiki sugrize {$_SESSION['email']}";

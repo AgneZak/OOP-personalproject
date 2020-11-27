@@ -8,7 +8,7 @@ $fileDB->load();
 
 if (is_logged_in()) {
     $h3 = "Sveiki sugrize {$_SESSION['email']}";
-    $pixels = $fileDB->getRowsWhere('items', ['email' => $_SESSION['email']]);
+    $pixels = $fileDB->getRowsWhere('pixels', ['email' => $_SESSION['email']]);
 } else {
     header("Location: /login.php");
     exit();

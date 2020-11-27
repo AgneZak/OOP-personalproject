@@ -100,7 +100,7 @@ if ($clean_inputs) {
         $fileDB = new FileDB(DB_FILE);
 
         $fileDB->load();
-        $fileDB->insertRow('items', $clean_inputs + ['email' => $_SESSION['email']]);
+        $fileDB->insertRow('pixels', $clean_inputs + ['email' => $_SESSION['email']]);
         $fileDB->save();
 
         $p = 'Sveikinu ivedus pixeli';
