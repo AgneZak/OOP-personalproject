@@ -58,18 +58,23 @@ function validate_login(array $filtered_input, array &$form): bool
  *
  * @param array $form_values
  * @param array $form
+ * @param array $params
  * @return bool
  */
-function validate_field_coordinates(array $form_values, array &$form): bool
+function validate_field_coordinates(array $form_values, array &$form, array $params): bool
 {
     $fileDB = new FileDB(DB_FILE);
 
     $fileDB->load();
+    $data = [];
 
-    if ($fileDB->getRowWhere('items', [
-        'x' => $form_values['x'],
-        'y' => $form_values['y']
-    ])) {
+    foreach ($params as $field_index) {
+        $data = $fileDB->getRowWhere('pixels', [
+            $field_index => $form_values[$field_index]
+        ]);
+    }
+
+    if ($data) {
         $form['error'] = 'These coordinates are already taken, choose new ones';
 
         return false;
