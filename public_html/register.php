@@ -115,10 +115,12 @@ if ($clean_inputs) {
 </head>
 <body>
 <main>
+    <header>
 
-    <?php require ROOT . '/app/templates/nav.tpl.php'; ?>
+        <?php require ROOT . '/app/templates/nav.tpl.php'; ?>
 
-    <article class="wrapper">
+    </header>
+    <section class="wrapper">
         <h1 class="header header--main">Reginkis</h1>
 
         <?php require ROOT . '/core/templates/form.tpl.php'; ?>
@@ -127,7 +129,7 @@ if ($clean_inputs) {
             <p><?php print $p; ?></p>
         <?php endif; ?>
 
-    </article>
+    </section>
 </main>
 </body>
 </html>
